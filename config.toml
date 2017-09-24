@@ -1,0 +1,37 @@
+baseurl = "http://stuartlee.org/"
+relativeurls = true
+languageCode = "en-us"
+title = "Stuart Lee"
+theme = "hugo-xmin"
+googleAnalytics = ""
+disqusShortname = ""
+ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
+
+[permalinks]
+    post = "/:year/:month/:day/:slug/"
+    note = "/note/:year/:month/:day/:slug/"
+
+[[menu.main]]
+    name = "Home"
+    url = "http://www.stuartlee.org"
+    weight = 1
+
+[[menu.main]]
+    name = "Software"
+    url = "/software/"
+    weight = 2
+
+[[menu.main]]
+    name = "Experience"
+    url = "/experience/"
+    weight = 2
+    
+[[menu.main]]
+    name = "Categories"
+    url = "/categories/"
+    weight = 3
+
+
+[params]
+    description = "This website was built with Hugo and blogdown using the [xmin theme](https://github.com/yihui/hugo-xmin)."
+    footer = "[Stuart Lee] (http://www.stuartlee.org) | [Github] (https://github.com/sa-lee) | [Twitter](https://twitter.com/_StuartLee)"
