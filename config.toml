@@ -22,14 +22,19 @@ ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
     weight = 2
 
 [[menu.main]]
+    name = "Presentations"
+    url = "/presentations/"
+    weight = 3
+
+[[menu.main]]
     name = "Experience"
     url = "/experience/"
-    weight = 2
-    
+    weight = 4
+
 [[menu.main]]
     name = "Categories"
     url = "/categories/"
-    weight = 3
+    weight = 5
 
 
 [params]

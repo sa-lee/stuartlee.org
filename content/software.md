@@ -1,5 +1,9 @@
 # Software
 
+[plyranges](https://github.com/sa-lee/plyranges)
+
+A grammar of data manipulation for genomics.
+
 
 
 [starmie](https://github.com/sa-lee/starmie) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/starmie)](https://cran.r-project.org/package=starmie)
