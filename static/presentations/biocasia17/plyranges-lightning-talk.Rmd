@@ -14,15 +14,23 @@ output:
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
+library(GenomicRanges)
+knitr::opts_chunk$set(comment = "#")
 ```
 
 # Bioconductor Infrastructure is powerful...
 
-```{r, echo=FALSE, fig.align='center'}
+```{r, echo=FALSE, fig.align='center', out.width=250}
 knitr::include_graphics("pkgs.svg")
+ir <- IRanges(start = 1:3, width = 5)
+gr <- GRanges(seqnames = "seq1", strand = c("+", "*", "-"), ranges = ir,
+              hello = c("   I", "  am", "data"))
 ```
 
-
+```{r, echo = FALSE}
+ir
+gr
+```
 ---
 # but the learning curve can be steep. 
 
@@ -44,12 +52,19 @@ class: inverse, center, middle
 
 # Example: restriction by fraction of overlap
 
+```{r, echo=FALSE}
+knitr::include_graphics("intersect-example.svg")
+```
+
 ### bedtools
 ```{bash, eval = FALSE}
 bedtools intersect -a cpg.bed -b exons.bed  -g hg19 -f 0.5 -wo
 ```
 
-### Bioconductor
+---
+
+### Bioconductor approach
+
 ```{r, eval = FALSE}
 library(GenomicRanges)
 library(rtracklayer)

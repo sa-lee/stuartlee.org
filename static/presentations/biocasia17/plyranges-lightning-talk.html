@@ -22,9 +22,28 @@ class: center, middle, inverse, title-slide
 
 # Bioconductor Infrastructure is powerful...
 
-&lt;img src="pkgs.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="pkgs.svg" width="250" style="display: block; margin: auto;" /&gt;
 
 
+```
+# IRanges object with 3 ranges and 0 metadata columns:
+#           start       end     width
+#       &lt;integer&gt; &lt;integer&gt; &lt;integer&gt;
+#   [1]         1         5         5
+#   [2]         2         6         5
+#   [3]         3         7         5
+```
+
+```
+# GRanges object with 3 ranges and 1 metadata column:
+#       seqnames    ranges strand |       hello
+#          &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;character&gt;
+#   [1]     seq1    [1, 5]      + |           I
+#   [2]     seq1    [2, 6]      * |          am
+#   [3]     seq1    [3, 7]      - |        data
+#   -------
+#   seqinfo: 1 sequence from an unspecified genome; no seqlengths
+```
 ---
 # but the learning curve can be steep. 
 
@@ -46,13 +65,18 @@ class: inverse, center, middle
 
 # Example: restriction by fraction of overlap
 
+![](intersect-example.svg)&lt;!-- --&gt;
+
 ### bedtools
 
 ```bash
 bedtools intersect -a cpg.bed -b exons.bed  -g hg19 -f 0.5 -wo
 ```
 
-### Bioconductor
+---
+
+### Bioconductor approach
+
 
 ```r
 library(GenomicRanges)
