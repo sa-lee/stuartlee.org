@@ -1,11 +1,11 @@
 # Software
 
-[plyranges](/plyranges/index.html)
+[plyranges](plyranges.stuartlee.org)
 [![Build Status](https://travis-ci.org/sa-lee/plyranges.svg?branch=master)](https://travis-ci.org/sa-lee/plyranges)
 [![Coverage Status](https://img.shields.io/codecov/c/github/sa-lee/plyranges/master.svg)](https://codecov.io/github/sa-lee/plyranges?branch=master)
 
-A grammar of data manipulation for genomics.
-
+An R/Bioconductor package which provides a grammar of genomic data 
+transformation.
 
 
 [starmie](https://github.com/sa-lee/starmie) 
