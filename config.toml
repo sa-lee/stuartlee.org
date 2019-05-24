@@ -1,42 +1,66 @@
-baseurl = "http://stuartlee.org/"
-relativeurls = true
-languageCode = "en-us"
-title = "Stuart Lee"
-theme = "hugo-xmin"
+# Configuration of Academic
+# Documentation: https://sourcethemes.com/academic/
+#
+# This file is formatted using TOML syntax - learn more at https://learnxinyminutes.com/docs/toml/
+# Each configuration section is defined by a name in square brackets (e.g. `[outputs]`).
+
+# Title of your site
+title = ""
+
+# The URL of your site.
+# End your URL with a `/` trailing slash, e.g. `https://example.com/`.
+baseurl = "/"
+
+# Enter a copyright notice to display in the site footer.
+# To display a copyright symbol, type `&copy;`. For current year, type `{year}`.
+copyright = "&copy; {year}"
+
+# Enable analytics by entering your Google Analytics tracking ID
 googleAnalytics = ""
+
+# Enable comments by entering your Disqus shortname
 disqusShortname = ""
-ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
 
-[permalinks]
-    post = "/:year/:month/:day/:slug/"
-    note = "/note/:year/:month/:day/:slug/"
+############################
+## Advanced options below ##
+############################
 
-[[menu.main]]
-    name = "Home"
-    url = "http://www.stuartlee.org"
-    weight = 1
+# Name of Academic theme folder in `themes/`.
+theme = "hugo-academic"
 
-[[menu.main]]
-    name = "Software"
-    url = "/software/"
-    weight = 2
+# Get last modified date for content from Git?
+enableGitInfo = false
 
-[[menu.main]]
-    name = "Presentations"
-    url = "/presentations/"
-    weight = 3
+# Default language to use (if you setup multilingual support)
+defaultContentLanguage = "en"
+hasCJKLanguage = false  # Set `true` for Chinese/Japanese/Korean languages.
+defaultContentLanguageInSubdir = false
 
-[[menu.main]]
-    name = "Experience"
-    url = "/experience/"
-    weight = 4
+paginate = 10  # Number of items per page in paginated lists.
+enableEmoji = true
+footnotereturnlinkcontents = "<sup>^</sup>"
+ignoreFiles = ["\\.ipynb$", ".ipynb_checkpoints$", "\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
-[[menu.main]]
-    name = "Categories"
-    url = "/categories/"
-    weight = 5
+[outputs]
+  home = [ "HTML", "RSS", "JSON" ]
+  section = [ "HTML", "RSS" ]
 
+# Configure BlackFriday Markdown rendering.
+#   See: https://gohugo.io/getting-started/configuration/#configure-blackfriday
+[blackfriday]
+  hrefTargetBlank = true  # `true` opens external links in a new tab. See https://github.com/gohugoio/hugo/issues/2424
+	angledQuotes = false
+	latexDashes = true
+  extensions = ["backslashLineBreak"]
 
-[params]
-    description = "This website was built with Hugo and blogdown using the [xmin theme](https://github.com/yihui/hugo-xmin)."
-    footer = "[Stuart Lee] (http://www.stuartlee.org) | [Github] (https://github.com/sa-lee) | [Twitter](https://twitter.com/_StuartLee)"
+[imaging]
+  resampleFilter = "lanczos"
+  quality = 90
+  anchor = "smart"  # Anchor for cropping. Options include Smart and Center.
+
+# Taxonomies.
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  publication_type = "publication_types"
+  author = "authors"
