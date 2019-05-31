@@ -4,7 +4,7 @@ authors:
 bio: PhD candidate in statistics at Monash University.
 education:
   courses:
-  - course: PhD in Statistics
+  - course: PhD Candidate in Statistics
     institution: Monash University
     year: 2020
   - course: MSc in Bioinformatics
@@ -23,7 +23,7 @@ name: Stuart Lee
 organizations:
 - name: Monash University
   url: ""
-role: PhD student
+role: PhD Candidate
 social:
 - icon: envelope
   icon_pack: fas
@@ -33,7 +33,7 @@ social:
   link: https://twitter.com/_StuartLee
 - icon: google-scholar
   icon_pack: ai
-  link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
+  link: https://scholar.google.com/citations?user=793ayD4AAAAJ&hl=en
 - icon: github
   icon_pack: fab
   link: https://github.com/sa-lee

@@ -13,7 +13,7 @@ baseurl = "/"
 
 # Enter a copyright notice to display in the site footer.
 # To display a copyright symbol, type `&copy;`. For current year, type `{year}`.
-copyright = "&copy; {year}"
+copyright = ""
 
 # Enable analytics by entering your Google Analytics tracking ID
 googleAnalytics = ""
@@ -56,7 +56,7 @@ ignoreFiles = ["\\.ipynb$", ".ipynb_checkpoints$", "\\.Rmd$", "\\.Rmarkdown$", "
 [imaging]
   resampleFilter = "lanczos"
   quality = 90
-  anchor = "smart"  # Anchor for cropping. Options include Smart and Center.
+  anchor = "center"  # Anchor for cropping. Options include Smart and Center.
 
 # Taxonomies.
 [taxonomies]
