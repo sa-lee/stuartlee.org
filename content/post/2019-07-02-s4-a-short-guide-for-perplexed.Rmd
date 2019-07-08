@@ -10,7 +10,7 @@ tags: [R, education]
 library(gganimate)
 ```
 
-I recently attended the [Bioconductor 2019]() conference in New York City, where
+I recently attended the [Bioconductor 2019](http://bioc2019.bioconductor.org) conference in New York City, where
 I was lucky enough to give a workshop on my Bioconductor package 
 [`plyranges`](https://www.bioconductor.org/packages/release/bioc/html/plyranges.html) 
 and present some [new ideas](https://github.com/sa-lee/superintronic) I'm working
