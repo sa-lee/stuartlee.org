@@ -103,6 +103,23 @@ that it’s current location is always a numeric vector of length 2, and that
 it’s orientation is in degrees between -360 to 360. We’ll also
 check that the path is a matrix with two columns. We can do this by creating
 a function to check our turtle is valid:</p>
+<pre class="r"><code>okTurtle &lt;- function(object) {
+  # check location has length 2
+  loc_ln &lt;- length(object@location)
+  # check orientation is between -360 to 360 and has length one
+  orientation &lt;- object@orientation
+  # check path is a numeric matrix
+  path &lt;- object@path
+  c(if (loc_ln != 2) &quot;location must have length two.&quot;,
+    if (length(orientation) != 1) &quot;orientation must have length one.&quot;,
+    if (abs(orientation) &gt; 360) paste(&quot;orientation angle&quot;, orientation, &quot;must be between -360 and 360 degrees.&quot;),
+    if (mode(path) != &quot;numeric&quot;) &quot;path must be a numeric matrix&quot;,
+    if (ncol(path) != 2) &quot;path must have two columns&quot;
+  )
+  TRUE
+}
+
+setValidity(&quot;Turtle&quot;, okTurtle)</code></pre>
 <pre><code>## Class &quot;Turtle&quot; [in &quot;.GlobalEnv&quot;]
 ## 
 ## Slots:
