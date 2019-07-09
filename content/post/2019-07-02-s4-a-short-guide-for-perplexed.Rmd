@@ -2,7 +2,7 @@
 title: 'S4: a short guide for the perplexed'
 author: Stuart Lee
 date: '2019-07-09'
-slug: s4-a-short-guide-for-perplexed
+slug: content/post/2019-07-09-s4-a-short-guide-for-perplexed
 categories: [R, object-oriented-programming, Bioconductor, education]
 tags: [R, education]
 ---
@@ -14,7 +14,7 @@ I recently attended the [Bioconductor 2019](http://bioc2019.bioconductor.org) co
 I was lucky enough to give a workshop on my Bioconductor package 
 [`plyranges`](https://www.bioconductor.org/packages/release/bioc/html/plyranges.html) 
 and present some [new ideas](https://github.com/sa-lee/superintronic) I'm working
-on range-based summarisation and visualisation. After some discussion with
+on. After some discussion with
 both Bioconductor veterans and new-comers there was general agreement that it 
 was hard to find good resources or even a beginner's guide for learning
 S4. This blog-post is an attempt to rectify that.
@@ -113,16 +113,16 @@ a function to check our turtle is valid:
 okTurtle <- function(object) {
   # check location has length 2
   loc_ln <- length(object@location)
-  if (loc_ln != 2) return("location must have length two.")
-  
   # check orientation is between -360 to 360 and has length one
   orientation <- object@orientation
-  if (length(orientation) != 1) return("orientation must have length one.")
-  if (abs(orientation) > 360) return(paste("orientation angle", orientation, "must be between -360 and 360 degrees."))
-  # check path is a matrix
+  # check path is a numeric matrix
   path <- object@path
-  if (!is(path, "matrix")) return("path must be a matrix")
-  if (ncol(path) != 2) return("path must have two columns")
+  c(if (loc_ln != 2) "location must have length two.",
+    if (length(orientation) != 1) "orientation must have length one.",
+    if (abs(orientation) > 360) paste("orientation angle", orientation, "must be between -360 and 360 degrees."),
+    if (mode(path) != "numeric") "path must be a numeric matrix",
+    if (ncol(path) != 2) "path must have two columns"
+  )
   TRUE
 }
 
@@ -155,10 +155,11 @@ So far we can't do anything interesting with turtles, we need to define
 some methods!
 
 
-### Principle 2: in statistics we like methods
+### Principle 2: in statistics we like functions
 
 Both S3 and S4 use generic functions which is a little different from
-other object-oriented programming languages. A generic function determines
+other object-oriented programming languages (it is a variety of [ad-hoc polymorphism](https://en.wikipedia.org/wiki/Ad_hoc_polymorphism) if you like that
+kind of thing). A generic function determines
 how a method is called when an argument is a given class (or combination of classes). 
 In general, a generic function should be created if you plan to reuse it 
 for many distinct classes or if it will be useful to other package developers.

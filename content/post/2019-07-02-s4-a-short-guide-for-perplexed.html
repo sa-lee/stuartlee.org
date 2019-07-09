@@ -2,7 +2,7 @@
 title: 'S4: a short guide for the perplexed'
 author: Stuart Lee
 date: '2019-07-09'
-slug: s4-a-short-guide-for-perplexed
+slug: content/post/2019-07-09-s4-a-short-guide-for-perplexed
 categories: [R, object-oriented-programming, Bioconductor, education]
 tags: [R, education]
 ---
@@ -13,7 +13,7 @@ tags: [R, education]
 I was lucky enough to give a workshop on my Bioconductor package
 <a href="https://www.bioconductor.org/packages/release/bioc/html/plyranges.html"><code>plyranges</code></a>
 and present some <a href="https://github.com/sa-lee/superintronic">new ideas</a> I’m working
-on range-based summarisation and visualisation. After some discussion with
+on. After some discussion with
 both Bioconductor veterans and new-comers there was general agreement that it
 was hard to find good resources or even a beginner’s guide for learning
 S4. This blog-post is an attempt to rectify that.</p>
@@ -127,10 +127,11 @@ the rules!).</p>
 <p>So far we can’t do anything interesting with turtles, we need to define
 some methods!</p>
 </div>
-<div id="principle-2-in-statistics-we-like-methods" class="section level3">
-<h3>Principle 2: in statistics we like methods</h3>
+<div id="principle-2-in-statistics-we-like-functions" class="section level3">
+<h3>Principle 2: in statistics we like functions</h3>
 <p>Both S3 and S4 use generic functions which is a little different from
-other object-oriented programming languages. A generic function determines
+other object-oriented programming languages (it is a variety of <a href="https://en.wikipedia.org/wiki/Ad_hoc_polymorphism">ad-hoc polymorphism</a> if you like that
+kind of thing). A generic function determines
 how a method is called when an argument is a given class (or combination of classes).
 In general, a generic function should be created if you plan to reuse it
 for many distinct classes or if it will be useful to other package developers.</p>
