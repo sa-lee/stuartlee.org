@@ -1,7 +1,7 @@
 ---
 title: 'S4: a short guide for the perplexed'
 author: Stuart Lee
-date: '2019-07-02'
+date: '2019-07-09'
 slug: s4-a-short-guide-for-perplexed
 categories: [R, object-oriented-programming, Bioconductor, education]
 tags: [R, education]
@@ -19,7 +19,8 @@ was hard to find good resources or even a beginner’s guide for learning
 S4. This blog-post is an attempt to rectify that.</p>
 <div id="what-is-s4" class="section level2">
 <h2>What is S4?</h2>
-<p>S4 is a formal object oriented system in R. It’s implemented in the
+<p>S4 is a formal object oriented system in R, it’s named S4 since it was a part
+of version four of S language. It’s implemented in the
 <code>methods</code> package created by John Chambers and maintained by the R core team.
 It also is one of several packages that ships with base R and is loaded on
 start up.</p>
@@ -30,12 +31,15 @@ start up.</p>
 to write classes that follow a strict structure - an S4 object has its
 components defined upfront using slots. A well designed class can avoid code
 duplication, and the strictness helps a developer to ensure
-their code is correct.</p>
-<p>Community is also a driver for using S4. The Bioconductor
-project uses S4 extensively: there are standard classes in the
-ecosystem to represent many types of ‘omics’ data. Developers and users alike
-can reuse these classes and their associated methods without the need to
-invent their own and enables interoperability between many different packages.</p>
+their code is correct. As will we see later, defining an S4 class requires components and their types to be declared upfront, meaning that S4 classes
+are also self-documenting.</p>
+<p>As with any other programming language or pardigm,
+you may have to use S4 because everyone else is using it. Take the
+Bioconductor project for example. They have defined standard S4 classes in their
+ecosystem to represent many types of ‘omics’ data. Developers are strongly
+nudged use these classes and their associated methods. This has two massive
+benefits: firstly, a developer doesn’t need to invent their own class and
+secondly, it enables interoperability between many different packages.</p>
 <p>Learning to program with S4 can be daunting - especially for new users of R
 or those who are used to the relative simplicity of the tidyverse ecosystem.
 I remember being incredibly confused and overwhelmed when I started to learn
@@ -44,8 +48,10 @@ myself reading a lot of other people’s code in order to figure out what on
 earth is going on. From both a developer and user perspective, I think
 the essence of S4 can be distilled into three principles.</p>
 </div>
-<div id="principle-1-its-all-about-the-abstraction" class="section level2">
-<h2>Principle 1: it’s all about the abstraction</h2>
+<div id="the-big-picture-design-principles-of-s4" class="section level2">
+<h2>The Big Picture Design Principles of S4</h2>
+<div id="principle-1-its-all-about-the-abstraction" class="section level3">
+<h3>Principle 1: it’s all about the abstraction</h3>
 <blockquote class="twitter-tweet">
 <p lang="en" dir="ltr">
 S4 objects don't do anything; they are pure data. Accepting that is the first step towards mastery of OOP in <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a>.
@@ -53,8 +59,8 @@ S4 objects don't do anything; they are pure data. Accepting that is the first st
 — Michael Lawrence (<span class="citation">@lawremi</span>) <a href="https://twitter.com/lawremi/status/632273174160277504?ref_src=twsrc%5Etfw">August 14, 2015</a>
 </blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-<p>The design of an S4 class is merely a way of setting up an abstraction for a data analysis
-problem. This is often the hardest part of using S4, coming up with a
+<p>The design of an S4 class is merely a way of setting up an abstraction for a data
+analysis problem. This is often the hardest part of using S4, coming up with a
 ‘good-enough’ abstraction for the problem at hand.</p>
 <p>Let’s try creating an S4 class for a <a href="https://en.wikipedia.org/wiki/Turtle_graphics">Turtle</a>.
 A turtle can move in a path in two dimensions as illustrated below:</p>
@@ -103,9 +109,10 @@ a function to check our turtle is valid:</p>
 ##                                           
 ## Name:     location orientation        path
 ## Class:     numeric     numeric      matrix</code></pre>
-<p>Now we also need an interface to creating a new object of class Turtle, called
-a constructor. Generally, this is a function that calls <code>new</code> and has
-arguments corresponding to the slots of our object.</p>
+<p>This updates the class definition, to include the checking a turtle is an OK
+turtle.</p>
+<p>Finally, we need an interface to creating a objects of class Turtle.
+This is called a constructor. Generally, this is a function that calls <code>new</code> and has arguments corresponding to the slots of our object.</p>
 <pre class="r"><code>Turtle &lt;- function(location = c(0,0), orientation = 0) {
   new(&quot;Turtle&quot;, 
       location = location, 
@@ -115,18 +122,20 @@ arguments corresponding to the slots of our object.</p>
 <p>Calling <code>new</code> now that the validity is set, will check that the arguments
 provided to the constructor result in a proper turtle. We haven’t included
 an argument for the path, cause our Turtle hasn’t travelled anywhere yet…</p>
+<p>Note that it’s a convention when using S4 to use CamelCase (I don’t make
+the rules!).</p>
 <p>So far we can’t do anything interesting with turtles, we need to define
 some methods!</p>
 </div>
-<div id="principle-2-in-statistics-we-like-methods" class="section level2">
-<h2>Principle 2: in statistics we like methods</h2>
+<div id="principle-2-in-statistics-we-like-methods" class="section level3">
+<h3>Principle 2: in statistics we like methods</h3>
 <p>Both S3 and S4 use generic functions which is a little different from
 other object-oriented programming languages. A generic function determines
 how a method is called when an argument is a given class (or combination of classes).
 In general, a generic function should be created if you plan to reuse it
 for many distinct classes or if it will be useful to other package developers.</p>
 <p>For example, we could create two generic functions that represent
-a Turtle moving forward and a turtle turning.</p>
+a turtle moving forward and a turtle turning.</p>
 <pre class="r"><code>setGeneric(&quot;forward&quot;, 
            function(x, ...) standardGeneric(&quot;forward&quot;)
 )</code></pre>
@@ -135,7 +144,7 @@ a Turtle moving forward and a turtle turning.</p>
 the signature of the generic and <code>...</code> which can be other arguments that
 will determine how a turtle moves. The class of <code>x</code> changes which <code>forward</code>
 method will be selected.</p>
-<p>Similarly, we can implement a generic for reorienting.</p>
+<p>Similarly, we can implement a generic for reorienting a turtle.</p>
 <pre class="r"><code>setGeneric(&quot;turn&quot;, function(x, ...) standardGeneric(&quot;turn&quot;))</code></pre>
 <pre><code>## [1] &quot;turn&quot;</code></pre>
 <p>To complete our interface, we will also create generics for accessing
@@ -152,7 +161,7 @@ and replacing each slot of our class.</p>
 <pre><code>## [1] &quot;path&quot;</code></pre>
 <pre class="r"><code>setGeneric(&quot;path&lt;-&quot;, function(x, value) standardGeneric(&quot;path&lt;-&quot;))</code></pre>
 <pre><code>## [1] &quot;path&lt;-&quot;</code></pre>
-<p>We now have a bunch of generics next we need to create methods for our Turtle.
+<p>We now have a bunch of generics next we need to create methods for our turtle.
 Let’s start simple with our getter functions. To create a method, we use
 <code>setMethod</code> with
 :
@@ -219,7 +228,7 @@ S4 classes, the print method is called “show”:</p>
 lil_turtle</code></pre>
 <pre><code>## [1] &quot;🐢​ Located at: 0,0 Facing: 0 degrees&quot;</code></pre>
 <p>When designing a new class it’s a good idea to target methods for generic
-functions in the base API. This ensures portability of your code and
+functions that are in the base API. This ensures portability of your code and
 means that your class behaves in a way that is already familiar to a user.</p>
 <p>Now we have implemented enough methods to make our turtle move, we can start
 getting our turtle to move around in 2-d! For example, we could move in
@@ -245,8 +254,8 @@ segments(path_taken[1:3,1],
          path_taken[2:4, 2])</code></pre>
 <p><img src="/post/2019-07-02-s4-a-short-guide-for-perplexed_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 </div>
-<div id="principle-3-designing-is-hard-reuse-instead" class="section level2">
-<h2>Principle 3: designing is hard, reuse instead!</h2>
+<div id="principle-3-designing-is-hard-reuse-instead" class="section level3">
+<h3>Principle 3: designing is hard, reuse instead!</h3>
 <blockquote class="twitter-tweet">
 <p lang="en" dir="ltr">
 If you're going to have a big multi-site collaboration, the language you're going to use isn't what you need to agree on. They key is stadardizing data structures. - Robert Gentleman <a href="https://twitter.com/hashtag/Bioc2019?src=hash&amp;ref_src=twsrc%5Etfw">#Bioc2019</a> <a href="https://twitter.com/hashtag/RGentlemanSymposium?src=hash&amp;ref_src=twsrc%5Etfw">#RGentlemanSymposium</a>
@@ -262,7 +271,7 @@ with two key examples being the <code>SummarizedExperiment</code> and <code>Rang
 Instead of inventing your own class
 you can extend (or just use) other package’s data structures. If the class
 has been implemented well, you won’t have to go through the boring process
-of implementing an interface like setters or getters.</p>
+of implementing an interface such as making setters and getters.</p>
 <p>Let’s extend our Turtle class, to a Turtle that’s holding a pen. A turtle
 holding a pen will include three new slots: colour, thickness, and an on/off switch.</p>
 <pre class="r"><code>setClass(&quot;TurtleWithPen&quot;, 
@@ -315,7 +324,7 @@ has normal.</p>
             }
           })</code></pre>
 <p>Now the show method will animate, if the pen is switched on, otherwise
-we will call the next method.</p>
+we will call the regular Turtle method.</p>
 <p>We can try this out by having our Turtle walk through an equilateral triangle:</p>
 <pre class="r"><code>pendown &lt;- function(x) {
   x@on &lt;- TRUE
@@ -345,6 +354,7 @@ turtle %&gt;%
 <pre><code>## [1] &quot;🐢​ Located at: 0,0 Facing: -180 degrees&quot;</code></pre>
 <pre><code>## 🐢 Located at: 0,0 Facing: -180 degrees</code></pre>
 </div>
+</div>
 <div id="wrapping-up" class="section level2">
 <h2>Wrapping up</h2>
 <p>The somewhat silly turtle graphics example has been my attempt at
@@ -352,7 +362,7 @@ demystifying S4 programming:</p>
 <ul>
 <li>S4 classes by themselves are just data, to compute with them you need to write methods.</li>
 <li>Methods are just functions that are set on a class and are constructed from generic functions.</li>
-<li>Reusing classes and methods enable a user and developer to minimise code de-duplication via inheritance.</li>
+<li>Reusing classes and methods enable a user and developer to minimise code duplication via inheritance.</li>
 </ul>
 <pre class="r"><code>star_pupil &lt;- TurtleWithPen(Turtle(c(30,30), -100), 
                             colour = &quot;green&quot;, thickness = 2) 
