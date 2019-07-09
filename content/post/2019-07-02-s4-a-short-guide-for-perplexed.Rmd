@@ -21,7 +21,8 @@ S4. This blog-post is an attempt to rectify that.
 
 ## What is S4?
 
-S4 is a formal object oriented system in R. It's implemented in the
+S4 is a formal object oriented system in R, it's named S4 since it was a part
+of version four of S language. It's implemented in the
 `methods` package created by John Chambers and maintained by the R core team.
 It also is one of several packages that ships with base R and is loaded on
 start up. 
@@ -32,13 +33,16 @@ Compared to other object oriented paradigms in R, S4 requires a developer
 to write classes that follow a strict structure - an S4 object has its 
 components defined upfront using slots. A well designed class can avoid code
 duplication, and the strictness helps a developer to ensure
-their code is correct.  
+their code is correct. As will we see later, defining an S4 class requires components and their types to be declared upfront, meaning that S4 classes
+are also self-documenting.
 
-Community is also a driver for using S4. The Bioconductor
-project uses S4 extensively: there are standard classes in the
-ecosystem to represent many types of 'omics' data. Developers and users alike 
-can reuse these classes and their associated methods without the need to 
-invent their own and enables interoperability between many different packages.
+As with any other programming language or pardigm, 
+you may have to use S4 because everyone else is using it. Take the 
+Bioconductor project for example. They have defined standard S4 classes in their
+ecosystem to represent many types of 'omics' data. Developers are strongly 
+nudged use these classes and their associated methods. This has two massive 
+benefits: firstly, a developer doesn't need to invent their own class and 
+secondly, it enables interoperability between many different packages.
 
 Learning to program with S4 can be daunting - especially for new users of R 
 or those who are used to the relative simplicity of the tidyverse ecosystem.
@@ -48,13 +52,14 @@ myself reading a lot of other people's code in order to figure out what on
 earth is going on. From both a developer and user perspective, I think 
 the essence of S4 can be distilled into three principles. 
 
+## The Big Picture Design Principles of S4
 
-## Principle 1: it's all about the abstraction
+### Principle 1: it's all about the abstraction
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">S4 objects don&#39;t do anything; they are pure data. Accepting that is the first step towards mastery of OOP in <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a>.</p>&mdash; Michael Lawrence (@lawremi) <a href="https://twitter.com/lawremi/status/632273174160277504?ref_src=twsrc%5Etfw">August 14, 2015</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-The design of an S4 class is merely a way of setting up an abstraction for a data analysis
-problem. This is often the hardest part of using S4, coming up with a 
+The design of an S4 class is merely a way of setting up an abstraction for a data 
+analysis problem. This is often the hardest part of using S4, coming up with a 
 'good-enough' abstraction for the problem at hand. 
 
 Let's try creating an S4 class for a [Turtle](https://en.wikipedia.org/wiki/Turtle_graphics). 
