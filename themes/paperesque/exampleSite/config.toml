@@ -7,24 +7,35 @@ copyright = "© 2011-2020 Fabian Tamp"
 # We're building drafts in config so that you can see them in the example on
 # Hugo Themes; you almost certainly don't want this on your production site
 buildDrafts = true
+# Enable for syntax highlighting
+pygmentsUseClasses = true
+
+
+[permalinks]
+    post = "/:year/:month/:day/:slug/"
 
 [markup]
   # This is the default from Hugo 0.60.0 onwards, but we're setting config
   # for it below, so make it explicit
   defaultMarkdownHandler = "goldmark"
-
-# Required to render HTML tags in the hugoExampleSite examples.
-[markup.goldmark.renderer]
-  unsafe = true
-
-# I can't remember if this is required for syntax highlighting or not.
-pygmentsUseClasses = true
+  # Required to render HTML tags in the hugoExampleSite examples.
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.highlight]
+    codeFences = false
+    guessSyntax = true
+    hl_Lines = ""
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    style = "friendly"
+    tabWidth = 4
 
 # Uncomment these lines for droplist / resource removal support! See the
 # README for more details
 
-# [outputs]
-# page = ["HTML", "droplist"]
+[outputs]
+  page = ["HTML", "droplist"]
 
 [params]
 # Turn this on if you want to disable margin notes everywhere!

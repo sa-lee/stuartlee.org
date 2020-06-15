@@ -31,13 +31,13 @@ pre {
   box-shadow: 0 5px 5px -5px #777777;
   max-width: 100%;
   /* These two copied from chroma theme (syntax.css) */
-  color: #f8f8f2;
-  background-color: #272822;
+ color: #f8f8f2;
+ background-color: #272822; 
 }
 
 pre,
 code {
-  font-family: monocode, monospace;
+  font-family: 'Fira Code', monospace;
   -webkit-font-smoothings: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
