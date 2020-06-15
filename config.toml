@@ -43,7 +43,7 @@ disableMarginNotes = true
   url = "about/"
 
 [[params.menu]]
-  name = "writings"
+  name = "writing"
   url = "post/"
 
 [[params.menu]]
