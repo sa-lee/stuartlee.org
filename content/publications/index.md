@@ -9,7 +9,6 @@ my [ORCiD](https://orcid.org/0000-0003-1179-8436) and [Google Scholar](https://s
 
 - Lee, S., Zhang, A. Y., Su, S., Ng, A. P., Holik, A. Z., Asselin-Labat, M.-L., Ritchie, M. E., & Law, C. W. (2019). Covering all your bases: incorporating intron signal from RNA-seq data. In bioRxiv (p. 352823). https://doi.org/10.1101/352823
 
-
 ## Published
 
 - Lee, S., Lawrence, M., & Love, M. I. (2020). Fluent genomics with plyranges and tximeta. F1000Research, 9(109), 109. https://doi.org/10.12688/f1000research.22259.1
