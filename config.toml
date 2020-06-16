@@ -34,7 +34,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
 [params]
 # Turn this on if you want to disable margin notes everywhere!
-disableMarginNotes = true
+disableMarginNotes = false
 
 # Customise your home page menu here:
 
