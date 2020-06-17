@@ -10,9 +10,9 @@ tags: [education, teaching-statistics, corrupting-the-youth]
 _Warning: a long-winded reflection on lecturing (for the first time ever) and having to suddenly do it online; skip to the end to see the cool interactive dashboards produced by the students in my class._
 
 For the last twelve weeks I have been lecturing an [introductory data analysis
-course](mida.numbat.space) for Monash's Masters of Business Analytics program. 
-The before times format for the course is what has been dubbed 'lectorial' style, 
-which is a ~~fancy~~ ugly  way of saying the classroom is flipped: students work
+course](https://mida.numbat.space) for Monash's Masters of Business Analytics program. 
+The before times format for the course is what has been dubbed 'lectorial' (lecture + tutorial) style, 
+which is another way of saying the class is an interactive workshop. Students work
 through lab based exercises while the lecturer and teaching assistants roam
 through the class guiding the students through any issues. Occasionally
 the class stops while the lecturer explains some tricky concept or reveals
@@ -22,8 +22,8 @@ live-action classes were cancelled.
 
 Switching to a fully online class, presented many challenges to the 'lectorial' 
 format, however I was fortunate enough that the syllabus and content of the course
-was well established by my supervisor Di Cook and colleague Nick Tierney [^1].
-It was also at this time that Greg Wilson did a very timely seminar titled
+was well established by my supervisor [Di Cook](https://twitter.com/visnut) and colleague [Nick Tierney](https://twitter.com/nj_tierney) [^1].
+It was also at this time that [Greg Wilson](https://twitter.com/gvwilson) did a very timely seminar titled
 [Teaching Online On Short Notice](https://education.rstudio.com/blog/2020/03/teaching-online-on-short-notice/)
 that provided useful tips (with some that I should have definitely followed
 more closely!). I learnt a lot from lecturing and was lucky that the
@@ -118,7 +118,7 @@ This dashboard was created by
 It pulls together some metrics for happiness around the world and explores
 what things are important for different regions happiness. 
 
-{{% figure src="./happiness.png" width="75%" link="https://ebsmonash.shinyapps.io/ETC5510-group-pompous-assets" class="center" %}}
+{{% figure src="./happiness.png" width="100%" link="https://ebsmonash.shinyapps.io/ETC5510-group-pompous-assets" class="center" %}}
 
 
 ### Group ggplot2: A Tale of Two Presidents
@@ -128,7 +128,7 @@ Emily Sheehan and explores twitter data (that they collected) and approval
 ratings of the past two US presidents. I really liked the presentation and
 narrative flow of this analysis. 
 
-{{% figure src="./pres.png" width="75%" link="https://ebsmonash.shinyapps.io/ETC5510-group-ggplot2/" class="center" %}}
+{{% figure src="./pres.png" width="100%" link="https://ebsmonash.shinyapps.io/ETC5510-group-ggplot2/" class="center" %}}
 
 ### Group VHS: That's What The PM Said
 
@@ -137,7 +137,7 @@ This dashboard was created by [Hahn Ngo](https://twitter.com/HaiHanhNgo),
 They scraped all of the Australian PMs recent media releases, speeches, and 
 so on, performed a tidy-text analysis on them and related them to current events.
 
-{{% figure src="./vhs.png" width="75%" link="https://ebsmonash.shinyapps.io/ETC5510-group-vhs/" class="center" %}}
+{{% figure src="./vhs.png" width="100%" link="https://ebsmonash.shinyapps.io/ETC5510-group-vhs/" class="center" %}}
 
 ## Acknowledgements
 
@@ -150,7 +150,7 @@ again for all the work they've put into designing this course, I wish I had
 one like it when I was at uni! Finally, a big thank you to all my students
 and all the hard work you've put in, especially during these very uncertain times!
 
-[^1]: who was also in the same boat running the undergrad stream of this course. A big thank you to Nick, Di,  and the TAs Steff Kobakian and Sherry Zhang for providing so much support and being there when it felt like everything was falling apart. 
+[^1]: who was also in the same boat running the undergrad stream of this course. A big thank you to Nick, Di,  and the TAs [Steff Kobakian](https://twitter.com/srkobakian) and [Sherry Zhang](https://twitter.com/huizezhangsh) for providing so much support and being there when it felt like everything was falling apart. 
 
 [^2]: The dashboards below are just a few of my favourites! It's really impressive, the creativity and scope of the projects and even more so when you note that most students had no prior R or programming (and very little stats) experience.
 
