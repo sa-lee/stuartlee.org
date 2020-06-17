@@ -11,14 +11,14 @@ _Warning: a long-winded reflection on lecturing (for the first time ever) and ha
 
 For the last twelve weeks I have been lecturing an [introductory data analysis
 course](mida.numbat.space) for Monash's Masters of Business Analytics program. 
-The before times format for the course is what has been dubbed 'lectorial'style, 
+The before times format for the course is what has been dubbed 'lectorial' style, 
 which is a ~~fancy~~ ugly  way of saying the classroom is flipped: students work
 through lab based exercises while the lecturer and teaching assistants roam
 through the class guiding the students through any issues. Occasionally
 the class stops while the lecturer explains some tricky concept or reveals
 a solution to the class. This semester we managed to do one traditional
 lectorial during which a university wide email was sent detailing that 
-live-action classes were cancelled (a most sensible action). 
+live-action classes were cancelled. 
 
 Switching to a fully online class, presented many challenges to the 'lectorial' 
 format, however I was fortunate enough that the syllabus and content of the course
@@ -51,13 +51,13 @@ I make mistakes when coding and call them out. I tried to get
 students actively engaged by via the "What questions do you have?" framing
 but I found that it was consistently the same students who would unmute and 
 answer my questions or have questions. I felt uncomfortable calling
-out a specific student. Perhaps this problem would have been mitigated through the use
-of breakout rooms which I had tried early on but found awkward as no one 
-really know each other yet and all the rooms were eerily quiet. I think I could've
-also made better use of the poll feature in Zoom. What is 
-a good way of getting to know and engage students and for students to get to know each other 
-during an online class? I missed that aspect most when compared to the online 
-class.
+out a specific student. Perhaps this problem would have been mitigated through 
+the useof breakout rooms which I had tried early on but found awkward as no one 
+really know each other yet and all the rooms were eerily quiet. I think I
+could've also made better use of the poll feature in Zoom. What is 
+a good way of getting to know and engage students and for students to get to know
+each other  during an online class? I missed that aspect most when compared to 
+the online class.
 
 In hindsight, it was a mistake to pre-record the conceptual parts
 of the lectorials too. I had polled the students about having pre-recorded 
@@ -89,9 +89,9 @@ that answered the questions we posed. The expectation was to produce the output
 within 24 hours of the exam being  posted and I relied on our tutors hand-marking 
 the results to pick up things like cheating and plagiarism. 
 
-The group project is challenging (but also fun) assessment for the class [^4]. Students
-work in teams to create a digital artefact that summarises some interesting
-findings from a 'real world' dataset they've found or collected.
+The group project is challenging (but also fun) assessment for the class [^4]. 
+Students work in teams to create a digital artefact that summarises some 
+interesting findings from a 'real world' dataset they've found or collected.
 I personally think this is the most valuable component of the course, in that
 it shows students how messy working with data can be and emphasises the 
 importance some of the stuff that I harked on and on about during the course
