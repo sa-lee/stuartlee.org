@@ -3,7 +3,7 @@ baseURL = "/"
 languageCode = "en-gb"
 title = "stuart lee"
 theme = "paperesque"
-copyright = "© 2017 - 2020 Stuart Lee"
+copyright = "© 2017 - 2021 Stuart Lee"
 enableEmoji = true
 
 # I can't remember if this is required for syntax highlighting or not.
@@ -62,7 +62,7 @@ disableMarginNotes = false
 [[params.topmenu]]
   name = "about"
   url = "about/"
-  
+
 [[params.topmenu]]
   name = "contact"
   url = "contact/"
