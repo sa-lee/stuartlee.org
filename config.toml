@@ -1,5 +1,4 @@
-
-baseURL = "/"
+baseURL = "https://stuartlee.org"
 languageCode = "en-gb"
 title = "stuart lee"
 theme = "paperesque"
