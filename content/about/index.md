@@ -20,7 +20,3 @@ Outside of research I enjoy:
 * Cooking.  
 * Board Games, especially co-op ones.
 * Hiking.
-
-
-
-
