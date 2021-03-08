@@ -2,7 +2,7 @@
 
 A lightweight [Hugo](https://gohugo.io) theme with a couple of neat tricks.
 
-You can see it in action on [capnfabs.net](https://capnfabs.net).
+You can see it in action on [capnfabs.net](https://capnfabs.net), or on the [Hugo Themes Example Site](https://themes.gohugo.io/theme/paperesque/).
 
 Here's what makes it special:
 
@@ -18,7 +18,7 @@ Here's what makes it special:
 Copy the files into your repo using `git subtree` (this is way easier to use than submodules; [here's an explainer](https://www.atlassian.com/git/tutorials/git-subtree)):
 
 ```sh
-git subtree add --prefix themes/paperesque https://github.com/capnfabs/paperesque master --squash
+git subtree add --prefix themes/paperesque https://github.com/capnfabs/paperesque mainline --squash
 ```
 
 This will add a commit to your repo with everything ready to go. You'll probably want to modify parts of this theme for your own usage! Subtree makes that easy, because you've just copied the code into your repo ✨
@@ -28,7 +28,7 @@ This will add a commit to your repo with everything ready to go. You'll probably
 If you're sure you want to use git submodules:
 
 ```sh
-git submodule add --init https://github.com/capnfabs/paperesque themes/paperesque
+git submodule add -b mainline https://github.com/capnfabs/paperesque themes/paperesque
 ```
 
 ### Select the theme in your `config.toml`
@@ -41,7 +41,7 @@ theme = "paperesque"
 
 ## Using Features
 
-### FYI: the Home Page is Menu-driven
+### FYI: the Home Page is Config-driven
 
 When you first install and switch to the theme, you might find that your homepage is blank. That's because all the links on the homepage are specified in your `config.toml`. Set it up like this:
 
@@ -125,7 +125,16 @@ disableMarginNotes = true
 
 Alternatively, you can turn it off per-page by adding the `disableMarginNotes = true` to your front-matter for the page.
 
-## Hacking / Modifying the theme
+## Testing against the example site
+
+You can build the example site with this theme with:
+
+```
+cd exampleSite
+hugo serve --themesDir=../..
+```
+
+## Hacking / Modifying the JS
 
 The javascript in use (`static/js/main.js`) is built from the `./js/` directory. Here are instructions for how to modify the JS:
 
@@ -159,4 +168,6 @@ parcel build --no-source-maps --experimental-scope-hoisting --out-dir static/js 
 _Experimental Scope Hoisting_ inlines Parcel's module loader. It shaves off like 2kB Gzipped. Laugh all you want, but that's half a second at dial-up speeds 😉
 
 ### Other resources
-The explanation for how a lot of this works is in [this blog post](https://capnfabs.net/posts/hugo-theme-exclude-processed-images/), so take a look there if you get stuck or want to borrow some of the ideas without grabbing all of them.
+
+- The explanation for how a lot of this works is in [this blog post](https://capnfabs.net/posts/hugo-theme-exclude-processed-images/), so take a look there if you get stuck or want to borrow some of the ideas without grabbing all of them.
+- You can see who else is using this theme by [searching Github for `paperesque filename:config.toml`](https://github.com/search?q=paperesque+filename%3Aconfig.toml&type=Code) (requires login).
