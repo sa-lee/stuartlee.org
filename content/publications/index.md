@@ -2,12 +2,13 @@
 title: Publications 
 ---
 
-Here are some of my recent papers and preprints. You can find out more at
-my [ORCiD](https://orcid.org/0000-0003-1179-8436) and [Google Scholar](https://scholar.google.com/citations?user=793ayD4AAAAJ&hl=en) pages.
+Here are some of my favourite recent papers and preprints. You can find more at my [ORCiD](https://orcid.org/0000-0003-1179-8436) and [Google Scholar](https://scholar.google.com/citations?user=793ayD4AAAAJ&hl=en) pages.
 
 ## Preprints
 
-- Lee, S., Zhang, A. Y., Su, S., Ng, A. P., Holik, A. Z., Asselin-Labat, M.-L., Ritchie, M. E., & Law, C. W. (2019). Covering all your bases: incorporating intron signal from RNA-seq data. In bioRxiv (p. 352823). https://doi.org/10.1101/352823
+- Lee, S., Laa, U., & Cook, D. (2020). Casting Multiple Shadows: High-Dimensional Interactive Data Visualisation with Tours and Embeddings. In arXiv [stat.OT]. arXiv. http://arxiv.org/abs/2012.06077
+
+- Laa, U., Cook, D., & Lee, S. (2020). Burning sage: Reversing the curse of dimensionality in the visualization of high-dimensional data. http://arxiv.org/abs/2009.10979
 
 ## Published
 
