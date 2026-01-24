@@ -1,0 +1,11 @@
+---
+title: "Stuart Lee"
+subtitle: "Data Science | Visualization | Software"
+page-layout: full
+---
+
+Hi, I'm Stuart! I'm a researcher focused on human-centred approaches to data science.
+
+My work explores how we can use computation and visualisation to augment the exploration of data and models.
+
+[About me](about.qmd){.btn .btn-primary} [Publications](publications.qmd){.btn .btn-secondary}
