@@ -1,0 +1,33 @@
+/*-- scss:defaults --*/
+
+// Fonts
+$font-family-sans-serif: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+$font-family-monospace: "Fira Code", "Source Code Pro", monospace;
+
+// Colors - professional academic palette
+$primary: #2c3e50;
+$link-color: #3498db;
+
+/*-- scss:rules --*/
+
+// Cleaner headings
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  margin-top: 1.5rem;
+}
+
+// Better code blocks
+pre {
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+// Homepage styling
+.quarto-title-block {
+  margin-bottom: 2rem;
+}
+
+// Footer
+.nav-footer {
+  margin-top: 3rem;
+}
