@@ -1,0 +1,12 @@
+---
+title: "Publications"
+bibliography: references.bib
+nocite: |
+  @*
+csl: apa.csl
+---
+
+Here are some of my recent papers and preprints. You can find more at my [ORCiD](https://orcid.org/0000-0003-1179-8436) and [Google Scholar](https://scholar.google.com/citations?user=793ayD4AAAAJ&hl=en) pages.
+
+::: {#refs}
+:::
