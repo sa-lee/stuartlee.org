@@ -1,0 +1,27 @@
+name: Spell Check
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - "**.qmd"
+      - "**.md"
+      - "_typos.toml"
+  pull_request:
+    paths:
+      - "**.qmd"
+      - "**.md"
+      - "_typos.toml"
+  workflow_dispatch:
+
+jobs:
+  spellcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check spelling
+        uses: crate-ci/typos@master
+        with:
+          files: ". --exclude _site --exclude _freeze --exclude site_libs"
+          config: ./_typos.toml

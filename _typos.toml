@@ -1,0 +1,79 @@
+# Spell checker configuration for typos
+# https://github.com/crate-ci/typos
+
+[files]
+extend-exclude = [
+    "_site/",
+    "_freeze/",
+    "*.bib",
+    "*.csl",
+    "site_libs/",
+]
+
+[default]
+locale = "en-gb"
+
+[default.extend-words]
+# British spellings
+analysed = "analysed"
+colour = "colour"
+favourite = "favourite"
+favourites = "favourites"
+summarise = "summarise"
+summarises = "summarises"
+emphasises = "emphasises"
+minimise = "minimise"
+standardised = "standardised"
+visualisation = "visualisation"
+centred = "centred"
+behaviour = "behaviour"
+organisation = "organisation"
+recognise = "recognise"
+realise = "realise"
+specialise = "specialise"
+optimise = "optimise"
+normalise = "normalise"
+characterise = "characterise"
+categorise = "categorise"
+
+# R/Data science packages and terms
+ggplot = "ggplot"
+plyranges = "plyranges"
+tximeta = "tximeta"
+tidyverse = "tidyverse"
+forcats = "forcats"
+magrittr = "magrittr"
+flexdashboard = "flexdashboard"
+Bioconductor = "Bioconductor"
+bioconductor = "bioconductor"
+RStudio = "RStudio"
+Rstudio = "Rstudio"
+rstudio = "rstudio"
+Rmd = "Rmd"
+qmd = "qmd"
+knitr = "knitr"
+CRAN = "CRAN"
+cran = "cran"
+
+# Names and institutions
+Monash = "Monash"
+ORCiD = "ORCiD"
+orcid = "orcid"
+Tierney = "Tierney"
+tierney = "tierney"
+Kobakian = "Kobakian"
+Seimon = "Seimon"
+Dilinie = "Dilinie"
+Sheehan = "Sheehan"
+Signor = "Signor"
+Varsha = "Varsha"
+Ujjinni = "Ujjinni"
+numbat = "numbat"
+ebsmonash = "ebsmonash"
+stuartlee = "stuartlee"
+fosstodon = "fosstodon"
+srkobakian = "srkobakian"
+
+# Technical terms
+shinyapps = "shinyapps"
+preprints = "preprints"
