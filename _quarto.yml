@@ -32,8 +32,7 @@ website:
 format:
   html:
     theme:
-      light: cosmo
-    css: styles.scss
+      light: [cosmo, styles.scss]
     toc: true
 
 execute:
