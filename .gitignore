@@ -6,3 +6,7 @@
 public/
 resources/
 private-key
+_site/
+_freeze/
+.quarto/
+/.quarto/
