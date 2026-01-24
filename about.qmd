@@ -1,22 +1,11 @@
 ---
-title: "Who?"
+title: "About"
 ---
 
-Hi, I'm Stuart! I'm a post-doctoral research fellow at Monash University in the Department of Econometrics and Business Statistics. My research focuses on
-human centred approaches to data science -- how can we
-use computation and visualisation to augment the exploration of data and models? How do we perform inference with exploratory visualisations?
-I am a big believer in using [interactive](https://github.com/vegawidget/virgo) and [dynamic](https://github.com/ggobi/tourr) graphics to achieve these goals.
+I'm Stuart, a data scientist who works in genomics.
 
-I am also interested the process and "science" of doing data science - how can
-we experiment with black box models and algorithms to understand how they work? What makes an effective data analysis? When can we say we've learned something new and true about the world from an analysis?
+At [WEHI](https://www.wehi.edu.au/) I research how short tandem repeats drive neurodegenerative diseases, using large cohorts like UK Biobank and Genomics England. I'm also interested in how we interpret prediction models—particularly as genetic risk scores and biological foundation models become widespread. Previously I built analytics tools at Genentech and research applications at the University of Melbourne.
 
-I want to make data science more accessible to people
-without quantitative or programming backgrounds, which has led me to think
-a lot about software design and teaching statistics and R.
+I created [plyranges](https://tidyomics.github.io/plyranges/), which brings tidy data principles to genomics and is now part of the [tidyomics](https://tidyomics.github.io/tidyomics/) ecosystem.
 
-Outside of research I enjoy:
-
-* Coffee - both the making and drinking of.
-* Cooking.
-* Board Games, especially co-op ones.
-* Hiking.
+I care about making data science accessible to people without quantitative backgrounds, which shapes how I build software and teach.
