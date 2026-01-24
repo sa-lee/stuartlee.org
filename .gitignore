@@ -10,3 +10,5 @@ _site/
 _freeze/
 .quarto/
 /.quarto/
+
+**/*.quarto_ipynb
