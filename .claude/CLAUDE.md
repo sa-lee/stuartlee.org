@@ -32,6 +32,6 @@
 
 ## Content
 - New posts: `quarto create post "title"` in `posts/` directory
-- Publications: Edit `references.bib` (auto-synced weekly from ORCID)
+- Publications: `references.bib` is auto-synced weekly from ORCID (journal articles only, sorted by year descending)
 - CV: Edit `cv.qmd`
 - Elsewhere pages: `rooms/` directory (coffee, film, books, notes, internet)

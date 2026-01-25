@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Fetch publications from ORCID and convert to BibTeX.
+"""Fetch journal articles from ORCID and convert to BibTeX.
 
 This script:
 1. Fetches work summaries from ORCID public API
-2. Extracts DOIs from each work
-3. Fetches complete BibTeX entries from doi.org (which has full metadata)
-4. Falls back to basic ORCID data if DOI lookup fails
+2. Filters to only journal articles (excludes misc, techreport, etc.)
+3. Extracts DOIs from each work
+4. Fetches complete BibTeX entries from doi.org (which has full metadata)
+5. Falls back to basic ORCID data if DOI lookup fails
 
 Best practices implemented:
 - Rate limiting to respect API quotas (ORCID: 12 req/sec anonymous)
@@ -165,6 +166,15 @@ def normalize_bibtex_key(bibtex: str, doi: str) -> str:
     return re.sub(pattern, replacement, bibtex, count=1)
 
 
+def get_work_type(work: dict) -> Optional[str]:
+    """Get the work type from an ORCID work entry."""
+    try:
+        summary = work.get("work-summary", [{}])[0]
+        return summary.get("type")
+    except (KeyError, IndexError):
+        return None
+
+
 def main():
     """Main function to fetch and write publications."""
     works_data = fetch_orcid_works()
@@ -172,10 +182,14 @@ def main():
 
     logger.info(f"Found {len(groups)} work groups in ORCID")
 
+    # Filter to only journal articles
+    article_groups = [g for g in groups if get_work_type(g) == "journal-article"]
+    logger.info(f"Filtered to {len(article_groups)} journal articles")
+
     entries = []
     seen_dois = set()  # For deduplication
 
-    for i, group in enumerate(groups):
+    for i, group in enumerate(article_groups):
         doi = extract_doi_from_work(group)
 
         if doi:
@@ -186,7 +200,7 @@ def main():
                 continue
             seen_dois.add(doi_lower)
 
-            logger.info(f"[{i+1}/{len(groups)}] Fetching BibTeX for DOI: {doi}")
+            logger.info(f"[{i+1}/{len(article_groups)}] Fetching BibTeX for DOI: {doi}")
             bibtex = fetch_bibtex_from_doi(doi)
 
             if bibtex:
@@ -196,7 +210,7 @@ def main():
                 continue
 
         # Fallback to basic ORCID data
-        logger.info(f"[{i+1}/{len(groups)}] Using basic ORCID data (no DOI or DOI lookup failed)")
+        logger.info(f"[{i+1}/{len(article_groups)}] Using basic ORCID data (no DOI or DOI lookup failed)")
         basic_entry = work_to_basic_bibtex(group)
         if basic_entry:
             entries.append(basic_entry)
