@@ -23,5 +23,4 @@ jobs:
       - name: Check spelling
         uses: crate-ci/typos@master
         with:
-          files: ". --exclude _site --exclude _freeze --exclude site_libs"
           config: ./_typos.toml
