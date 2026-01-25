@@ -1,33 +1,737 @@
 /*-- scss:defaults --*/
 
-// Fonts
-$font-family-sans-serif: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-$font-family-monospace: "Fira Code", "Source Code Pro", monospace;
+// ============================================
+// AURORA EDITORIAL THEME
+// Frutiger Aero meets warm editorial design
+// ============================================
 
-// Colors - professional academic palette
-$primary: #2c3e50;
-$link-color: #3498db;
+// Typography - Bold serif headlines + friendly accessible body
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+$font-family-sans-serif: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+$font-family-serif: "Fraunces", Georgia, serif;
+$headings-font-family: $font-family-serif;
+
+// Font sizes - Larger base with responsive scaling
+$font-size-root: 20px;
+$h1-font-size: 2.75rem;
+$h2-font-size: 2rem;
+$h3-font-size: 1.5rem;
+
+// Aurora color palette - Light mode
+$white: #fffcf9;
+$warm-white: #fefbf6;
+$warm-gray-100: #f8f5f0;
+$warm-gray-200: #ede8e1;
+$warm-gray-700: #4a4540;
+$warm-gray-900: #2d2a26;
+
+// Aurora accent colors
+$aurora-sky: #7eb8da;
+$aurora-sky-light: #a8d4f0;
+$aurora-peach: #f4a574;
+$aurora-coral: #e8846e;
+$aurora-green: #7fc9a8;
+$aurora-green-light: #a5dfc4;
+$aurora-violet: #b8a5d6;
+
+// Primary colors
+$primary: $aurora-coral;
+$link-color: #b85442;
+$body-bg: $warm-white;
+$body-color: $warm-gray-900;
+
+// Code
+$code-bg: $warm-gray-100;
+$code-color: $warm-gray-700;
 
 /*-- scss:rules --*/
 
-// Cleaner headings
+// ============================================
+// BASE STYLES
+// ============================================
+
+body {
+  background: $warm-white;
+  background-image:
+    radial-gradient(ellipse at 0% 0%, rgba($aurora-sky, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 100% 100%, rgba($aurora-peach, 0.08) 0%, transparent 50%);
+  background-attachment: fixed;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+
+  // Responsive font sizing
+  font-size: 20px;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 17px;
+  }
+}
+
+// ============================================
+// TYPOGRAPHY
+// ============================================
+
 h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family-serif;
   font-weight: 600;
-  margin-top: 1.5rem;
+  color: $warm-gray-900;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
 }
 
-// Better code blocks
+h1 {
+  font-weight: 700;
+  font-size: 2.75rem;
+
+  @media (max-width: 768px) {
+    font-size: 2.25rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
+  }
+
+  // Gradient text for main titles
+  &.title {
+    background: linear-gradient(135deg, $aurora-coral 0%, $aurora-peach 50%, $aurora-sky 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+h2 {
+  font-size: 2rem;
+  border-bottom: 2px solid $warm-gray-200;
+  padding-bottom: 0.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.75rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+  }
+}
+
+p {
+  margin-bottom: 1.25rem;
+}
+
+a {
+  color: $link-color;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: darken($link-color, 10%);
+    text-decoration-thickness: 2.5px;
+  }
+}
+
+// ============================================
+// NAVIGATION
+// ============================================
+
+.navbar {
+  background: rgba($warm-white, 0.85) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba($warm-gray-200, 0.5);
+
+  .navbar-brand {
+    font-family: $font-family-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: $warm-gray-900 !important;
+  }
+
+  .nav-link {
+    font-weight: 500;
+    color: $warm-gray-700 !important;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, $aurora-peach, $aurora-coral);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    &:hover::after,
+    &.active::after {
+      width: 80%;
+    }
+  }
+}
+
+// ============================================
+// GLASS CARDS (Frutiger Aero effect)
+// ============================================
+
+.glass-card {
+  background: rgba($white, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba($white, 0.8);
+  border-radius: 16px;
+  box-shadow:
+    0 4px 24px rgba($warm-gray-900, 0.06),
+    0 1px 2px rgba($warm-gray-900, 0.04),
+    inset 0 1px 0 rgba($white, 0.8);
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 8px 32px rgba($warm-gray-900, 0.1),
+      0 2px 4px rgba($warm-gray-900, 0.06),
+      inset 0 1px 0 rgba($white, 0.9);
+  }
+}
+
+// ============================================
+// POST LISTINGS - Enhanced glass effect
+// ============================================
+
+.quarto-listing {
+  .listing-item {
+    background: linear-gradient(
+      135deg,
+      rgba($white, 0.9) 0%,
+      rgba($warm-gray-100, 0.7) 100%
+    );
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba($white, 0.9);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 1.25rem;
+    box-shadow:
+      0 4px 20px rgba($warm-gray-900, 0.08),
+      0 1px 3px rgba($warm-gray-900, 0.05),
+      inset 0 1px 0 rgba($white, 1),
+      inset 0 -1px 0 rgba($warm-gray-200, 0.3);
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: linear-gradient(
+        135deg,
+        rgba($white, 0.95) 0%,
+        rgba($aurora-peach, 0.08) 100%
+      );
+      border-color: rgba($aurora-peach, 0.4);
+      transform: translateY(-3px);
+      box-shadow:
+        0 8px 30px rgba($aurora-coral, 0.15),
+        0 4px 10px rgba($warm-gray-900, 0.08),
+        inset 0 1px 0 rgba($white, 1);
+    }
+  }
+
+  .listing-title {
+    font-family: $font-family-serif;
+    font-weight: 600;
+    color: $warm-gray-900;
+  }
+
+  .listing-date {
+    color: $warm-gray-700;
+    font-size: 0.9rem;
+  }
+
+  .listing-categories .listing-category {
+    background: linear-gradient(135deg, rgba($aurora-sky, 0.2), rgba($aurora-green, 0.2));
+    color: $warm-gray-700;
+    border-radius: 20px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid rgba($aurora-sky, 0.3);
+    box-shadow: 0 1px 3px rgba($aurora-sky, 0.1);
+  }
+}
+
+// ============================================
+// CONTENT PAGES
+// ============================================
+
+#quarto-content {
+  padding-top: 2rem;
+}
+
+.quarto-title {
+  margin-bottom: 2rem;
+
+  .title {
+    margin-bottom: 0.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.25rem;
+    color: $warm-gray-700;
+    font-weight: 400;
+  }
+}
+
+// ============================================
+// CODE BLOCKS
+// ============================================
+
 pre {
-  border-radius: 0.5rem;
-  padding: 1rem;
+  background: $warm-gray-100;
+  border: 1px solid $warm-gray-200;
+  border-radius: 12px;
+  padding: 1.25rem;
+  overflow-x: auto;
+
+  code {
+    font-size: 0.9rem;
+  }
 }
 
-// Homepage styling
-.quarto-title-block {
+code {
+  background: rgba($aurora-sky, 0.1);
+  color: $warm-gray-700;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+// ============================================
+// FOOTER
+// ============================================
+
+.nav-footer {
+  background: rgba($warm-gray-100, 0.5);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid $warm-gray-200;
+  margin-top: 4rem;
+  padding: 2rem 0;
+
+  .nav-footer-center {
+    color: $warm-gray-700;
+    font-size: 0.9rem;
+  }
+}
+
+// ============================================
+// BUTTONS
+// ============================================
+
+a.btn-primary,
+.btn-primary {
+  background: linear-gradient(135deg, $aurora-coral, $aurora-peach);
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.25rem;
+  font-weight: 500;
+  color: $warm-gray-900 !important;
+  text-decoration: none !important;
+  box-shadow: 0 2px 8px rgba($aurora-coral, 0.3);
+  transition: all 0.3s ease;
+  -webkit-text-fill-color: $warm-gray-900;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba($aurora-coral, 0.4);
+    background: linear-gradient(135deg, darken($aurora-coral, 5%), darken($aurora-peach, 5%));
+    color: $warm-gray-900 !important;
+    -webkit-text-fill-color: $warm-gray-900;
+  }
+}
+
+a.btn-secondary,
+.btn-secondary {
+  background: rgba($aurora-sky, 0.15);
+  border: 1px solid rgba($aurora-sky, 0.3);
+  border-radius: 8px;
+  padding: 0.6rem 1.25rem;
+  font-weight: 500;
+  color: $warm-gray-700 !important;
+  text-decoration: none !important;
+  -webkit-text-fill-color: $warm-gray-700;
+  transition: all 0.3s ease;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background: rgba($aurora-sky, 0.25);
+    border-color: rgba($aurora-sky, 0.5);
+    color: $warm-gray-900 !important;
+    -webkit-text-fill-color: $warm-gray-900;
+  }
+}
+
+// ============================================
+// ACCESSIBILITY - Focus States
+// ============================================
+
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible,
+.nav-link:focus-visible,
+.room-card a:focus-visible {
+  outline: 3px solid $aurora-coral;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.room-card:focus-within {
+  outline: 3px solid $aurora-coral;
+  outline-offset: 2px;
+}
+
+// ============================================
+// ROOM MARKERS (for personality sections)
+// ============================================
+
+.room-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: $warm-gray-700;
+  margin-bottom: 1rem;
+
+  &::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  &.writing::before { background: $aurora-coral; }
+  &.reading::before { background: $aurora-green; }
+  &.film::before { background: $aurora-violet; }
+  &.coffee::before { background: $aurora-peach; }
+  &.games::before { background: $aurora-sky; }
+}
+
+// ============================================
+// IMAGE CONSTRAINTS - Prevent overflow
+// ============================================
+
+.quarto-figure,
+.quarto-figure-center,
+figure {
+  max-width: 100%;
+  margin: 1.5rem 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+// Specifically for post content images
+#quarto-content img,
+.content img,
+article img {
+  max-width: 100%;
+  height: auto;
+}
+
+// ============================================
+// ANIMATIONS
+// ============================================
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.quarto-title,
+#quarto-content > section > p:first-of-type {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+// Staggered animation for listings
+.quarto-listing .listing-item {
+  animation: fadeInUp 0.5s ease-out backwards;
+
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.08}s;
+    }
+  }
+}
+
+// ============================================
+// HOMEPAGE - Hero Section
+// ============================================
+
+.hero {
+  padding: 3rem 0 2rem;
   margin-bottom: 2rem;
 }
 
-// Footer
-.nav-footer {
-  margin-top: 3rem;
+.hero-content {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+}
+
+.hero-photo {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid rgba($aurora-peach, 0.3);
+  box-shadow:
+    0 8px 32px rgba($aurora-coral, 0.15),
+    0 2px 8px rgba($warm-gray-900, 0.1);
+  flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+.hero-text {
+  flex: 1;
+
+  p {
+    font-size: 1.15rem;
+    color: $warm-gray-700;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .btn {
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+}
+
+h1.hero-title {
+  color: $aurora-coral; // Fallback
+  background: linear-gradient(135deg, $aurora-coral 0%, $aurora-peach 50%, $aurora-sky 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  @media (forced-colors: active) {
+    background: none;
+    -webkit-text-fill-color: currentColor;
+  }
+}
+
+// ============================================
+// HOMEPAGE - Section Labels
+// ============================================
+
+.section-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: $warm-gray-700;
+  margin: 3rem 0 1rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+
+  &::before {
+    content: '✦';
+    color: $aurora-peach;
+    font-size: 0.7rem;
+    position: relative;
+    top: -0.05em;
+    speak: never;
+  }
+}
+
+// ============================================
+// HOMEPAGE - Spotlight Section
+// ============================================
+
+.spotlight {
+  margin-bottom: 1rem;
+}
+
+.spotlight-card {
+  max-width: 500px;
+
+  h3 {
+    font-family: $font-family-serif;
+    font-size: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    color: $warm-gray-900;
+  }
+
+  p {
+    margin-bottom: 1rem;
+    color: $warm-gray-700;
+  }
+
+  .btn-sm {
+    padding: 0.4rem 0.9rem;
+    font-size: 0.85rem;
+  }
+}
+
+// ============================================
+// HOMEPAGE - Rooms Grid
+// ============================================
+
+.rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.room-card {
+  background: rgba($white, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba($white, 0.9);
+  border-radius: 12px;
+  padding: 1.25rem 1rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow:
+    0 2px 12px rgba($warm-gray-900, 0.06),
+    inset 0 1px 0 rgba($white, 0.8);
+
+  a {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .room-icon {
+    font-size: 1.75rem;
+    display: block;
+  }
+
+  .room-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: $warm-gray-700;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    border-color: rgba($aurora-peach, 0.4);
+    box-shadow:
+      0 8px 24px rgba($aurora-coral, 0.12),
+      0 2px 8px rgba($warm-gray-900, 0.08),
+      inset 0 1px 0 rgba($white, 0.9);
+
+    .room-name {
+      color: $aurora-coral;
+    }
+  }
+}
+
+// ============================================
+// HOMEPAGE - Now Section
+// ============================================
+
+.now-section {
+  background: rgba($white, 0.5);
+  border: 1px solid rgba($warm-gray-200, 0.5);
+  border-radius: 12px;
+  padding: 1.5rem;
+  max-width: 500px;
+
+  p {
+    margin-bottom: 0.5rem;
+
+    strong {
+      color: $warm-gray-900;
+    }
+  }
+
+  ul {
+    margin: 0 0 1.25rem 0;
+    padding-left: 1.25rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  li {
+    color: $warm-gray-700;
+    margin-bottom: 0.25rem;
+  }
+}
+
+// ============================================
+// ACCESSIBILITY - Reduced Motion
+// ============================================
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

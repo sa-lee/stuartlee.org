@@ -1,11 +1,79 @@
 ---
-title: "Stuart Lee"
-subtitle: "Data Science | Visualization | Software"
+title: ""
 page-layout: full
+toc: false
+title-block-style: none
 ---
 
-Hi, I'm Stuart! I'm a researcher focused on human-centred approaches to data science.
+::: {.hero}
+::: {.hero-content}
+![](headshot-slee.jpeg){.hero-photo}
 
-My work explores how we can use computation and visualisation to augment the exploration of data and models.
+::: {.hero-text}
+# Stuart Lee {.hero-title}
 
-[About me](about.qmd){.btn .btn-primary} [Publications](publications.qmd){.btn .btn-secondary}
+Data scientist working in genomics.
+I build tools that make complex data accessible.
+
+[About](about.qmd){.btn .btn-primary}
+[Writing](posts.qmd){.btn .btn-secondary}
+[Publications](publications.qmd){.btn .btn-secondary}
+:::
+:::
+:::
+
+::: {.section-label}
+Something I built
+:::
+
+::: {.spotlight}
+::: {.spotlight-card .glass-card}
+### plyranges
+
+Tidy data principles for genomic ranges. Part of the [tidyomics](https://tidyomics.github.io/tidyomics/) ecosystem.
+
+[GitHub](https://github.com/tidyomics/plyranges){.btn .btn-secondary .btn-sm}
+[Documentation](https://tidyomics.github.io/plyranges/){.btn .btn-secondary .btn-sm}
+:::
+:::
+
+::: {.section-label}
+Elsewhere
+:::
+
+::: {.rooms-grid}
+::: {.room-card}
+[<span class="room-icon">☕</span><span class="room-name">Coffee</span>](rooms/coffee.qmd)
+:::
+
+::: {.room-card}
+[<span class="room-icon">🎬</span><span class="room-name">Film</span>](rooms/film.qmd)
+:::
+
+::: {.room-card}
+[<span class="room-icon">📚</span><span class="room-name">Books</span>](rooms/books.qmd)
+:::
+
+::: {.room-card}
+[<span class="room-icon">📝</span><span class="room-name">Notes</span>](rooms/notes.qmd)
+:::
+
+::: {.room-card}
+[<span class="room-icon">🔗</span><span class="room-name">Internet</span>](rooms/internet.qmd)
+:::
+:::
+
+::: {.section-label}
+Now
+:::
+
+::: {.now-section}
+**Reading**
+
+- *Breaking Things at Work* — Gavin Mueller
+- *The Wall* — Marlen Haushofer
+
+**Watching**
+
+- *Twin Peaks: The Return*
+:::

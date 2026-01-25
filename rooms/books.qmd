@@ -1,0 +1,9 @@
+---
+title: "Books"
+---
+
+::: {.room-label .reading}
+Books Room
+:::
+
+*Coming soon.* This space will hold reading notes, recommendations, and bookish thoughts.
