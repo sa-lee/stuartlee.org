@@ -7,7 +7,7 @@ title-block-style: none
 
 ::: {.hero}
 ::: {.hero-content}
-![](headshot-slee.jpeg){.hero-photo}
+![](images/headshot-slee.jpeg){.hero-photo}
 
 ::: {.hero-text}
 # Stuart Lee {.hero-title}
