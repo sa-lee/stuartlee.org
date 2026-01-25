@@ -15,7 +15,7 @@
 - Dark mode uses separate theme file: `dark: [darkly, styles-dark.scss]` (not CSS selectors)
 - Gradient text `-webkit-text-fill-color: transparent` bleeds into child elements - scope to specific tags like `h1.hero-title`
 - SiteGround uses port 18765 for SSH
-- SiteGround Dynamic Cache must be flushed after deploys (Site Tools → Speed → Caching)
+- SiteGround Dynamic Cache is auto-flushed after deploys via curl PURGE in the workflow
 - GitHub Actions SSH with passphrase keys needs `expect` + `ssh-agent`, not `sshpass`
 
 ## Theming
