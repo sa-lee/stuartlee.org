@@ -1,0 +1,13 @@
+# Security headers. Wrapped so a host without mod_headers degrades to
+# "no headers" rather than a 500.
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=15552000"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "DENY"
+
+  # Unlike the main site, archived posts carry inline style="" attributes from
+  # Shiki syntax highlighting, so style-src needs 'unsafe-inline'. Scripts are
+  # still blocked outright by default-src 'none'.
+  Header always set Content-Security-Policy "default-src 'none'; img-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"
+</IfModule>

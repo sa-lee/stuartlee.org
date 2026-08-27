@@ -5,6 +5,9 @@ export default defineConfig({
   srcDir: "src-archive",
   publicDir: "public-archive",
   outDir: "dist-archive",
+  build: {
+    inlineStylesheets: "never",
+  },
   markdown: {
     shikiConfig: {
       themes: { light: "github-light", dark: "github-dark" },
