@@ -1,9 +1,0 @@
----
-title: "Internet"
----
-
-::: {.room-label .games}
-Internet Room
-:::
-
-*Coming soon.* This space will hold links to interesting corners of the web.

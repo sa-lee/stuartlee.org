@@ -1,37 +1,34 @@
 # Stuart Lee Personal Website
 
 ## Stack
-- Quarto static site generator
+- Astro static site generator, two builds from one repo:
+  - Main site (`astro.config.mjs`): `src/` → `dist/` → https://stuartlee.org
+  - Archive (`astro.archive.config.mjs`): `src-archive/` → `dist-archive/` → https://archive.stuartlee.org
 - GitHub Actions for CI/CD
 - SiteGround hosting (rsync over SSH)
 
 ## Commands
-- `quarto preview` - Local dev server at localhost:4567
-- `quarto render` - Build site to `_site/`
+- `npm run dev` - Main site dev server
+- `npm run dev:archive` - Archive dev server
+- `npm run build` - Build both sites
 - `git push origin master` - Triggers auto-deploy to SiteGround
 
+## Design
+- Spartan, text-first, single-page (modeled on hamiltonulmer.com)
+- One stylesheet: `shared/global.css` — CSS custom properties, dark mode via `prefers-color-scheme` (no toggle)
+- Fonts: Fraunces (headings), Nunito (body) — self-hosted via @fontsource-variable
+- Shared layouts in `shared/` (`Base.astro`, `Post.astro`), imported by both srcDirs via relative paths
+
+## Archive
+- The 3 old blog posts live at archive.stuartlee.org with original `/posts/<slug>/` URLs
+- Post images are served from `public-archive/posts/<slug>/` (not bundled) because bodies use
+  relative/raw-HTML image references; markdown-syntax images use absolute `/posts/<slug>/...` paths
+- `public/.htaccess` 301-redirects stuartlee.org/posts/* to the archive
+- Post copy is verbatim from the old Quarto site — don't edit bodies
+
 ## Gotchas
-- SCSS must be in theme array, not css field: `theme: [cosmo, styles.scss]`
-- Dark mode uses separate theme file: `dark: [darkly, styles-dark.scss]` (not CSS selectors)
-- Gradient text `-webkit-text-fill-color: transparent` bleeds into child elements - scope to specific tags like `h1.hero-title`
 - SiteGround uses port 18765 for SSH
-- SiteGround Dynamic Cache is auto-flushed after deploys via curl PURGE in the workflow
+- SiteGround Dynamic Cache is auto-flushed after deploys via curl PURGE in the workflow (both hosts)
 - GitHub Actions SSH with passphrase keys needs `expect` + `ssh-agent`, not `sshpass`
-
-## Theming
-- Light theme: `styles.scss` (Aurora Editorial - warm whites, coral/peach accents)
-- Dark theme: `styles-dark.scss` (warm espresso browns, cream text)
-- Fonts: Fraunces (headings), Nunito (body)
-- New content directories must be added to `_quarto.yml` render list
-
-## Accessibility
-- Focus states: 3px outline with `$aurora-coral` (light) / `$aurora-peach` (dark)
-- Reduced motion: `@media (prefers-reduced-motion: reduce)` disables animations
-- Touch targets: Buttons have 44px min-height
-- High contrast: Gradient text has `@media (forced-colors: active)` fallback
-
-## Content
-- New posts: `quarto create post "title"` in `posts/` directory
-- Publications: `references.bib` is auto-synced weekly from ORCID (journal articles only, sorted by year descending)
-- CV: Edit `cv.qmd`
-- Elsewhere pages: `rooms/` directory (coffee, film, books, notes, internet)
+- Archive docroot path is set in `deploy.yml` env (`ARCHIVE_DOCROOT`)
+- System node is v12 (too old for Astro); Node 22 lives at `~/.local/opt/node-v22.14.0-linux-x64/` and is symlinked into `~/.local/bin`, which precedes `/usr/bin` on PATH

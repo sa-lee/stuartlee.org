@@ -1,9 +1,0 @@
----
-title: "Coffee"
----
-
-::: {.room-label .coffee}
-Coffee Room
-:::
-
-*Coming soon.* This space will hold thoughts on coffee spots, brewing methods, and caffeinated rituals.

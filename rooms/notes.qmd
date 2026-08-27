@@ -1,9 +1,0 @@
----
-title: "Notes + Quotes"
----
-
-::: {.room-label .writing}
-Notes Room
-:::
-
-*Coming soon.* This space will hold collected quotes, short notes, and fragments worth keeping.

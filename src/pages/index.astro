@@ -1,0 +1,162 @@
+---
+import { Image } from "astro:assets";
+import Base from "../../shared/Base.astro";
+import headshot from "../assets/headshot-slee.jpeg";
+
+// Icon paths from simple-icons (CC0); LinkedIn from Bootstrap Icons (MIT)
+const iconLinks = [
+  {
+    label: "GitHub",
+    href: "https://github.com/sa-lee",
+    viewBox: "0 0 24 24",
+    path: "M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12",
+  },
+  {
+    label: "Google Scholar",
+    href: "https://scholar.google.com/citations?user=793ayD4AAAAJ&hl=en",
+    viewBox: "0 0 24 24",
+    path: "M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z",
+  },
+  {
+    label: "LinkedIn",
+    href: "https://au.linkedin.com/in/stuart-lee-research",
+    viewBox: "0 0 16 16",
+    path: "M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z",
+  },
+  {
+    label: "Substack",
+    href: "https://substack.com/@stuartscherey",
+    viewBox: "0 0 24 24",
+    path: "M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z",
+  },
+  {
+    label: "Letterboxd",
+    href: "https://letterboxd.com/babkaboi/",
+    viewBox: "0 0 24 24",
+    path: "M8.224 14.352a4.447 4.447 0 0 1-3.775 2.092C1.992 16.444 0 14.454 0 12s1.992-4.444 4.45-4.444c1.592 0 2.988.836 3.774 2.092-.427.682-.673 1.488-.673 2.352s.246 1.67.673 2.352zM15.101 12c0-.864.247-1.67.674-2.352-.786-1.256-2.183-2.092-3.775-2.092s-2.989.836-3.775 2.092c.427.682.674 1.488.674 2.352s-.247 1.67-.674 2.352c.786 1.256 2.183 2.092 3.775 2.092s2.989-.836 3.775-2.092A4.42 4.42 0 0 1 15.1 12zm4.45-4.444a4.447 4.447 0 0 0-3.775 2.092c.427.682.673 1.488.673 2.352s-.246 1.67-.673 2.352a4.447 4.447 0 0 0 3.775 2.092C22.008 16.444 24 14.454 24 12s-1.992-4.444-4.45-4.444z",
+  },
+];
+---
+
+<Base
+  title="Stuart Lee"
+  description="Stuart Lee — data scientist working in genomics."
+>
+  <header class="intro">
+    <Image
+      src={headshot}
+      alt="Photo of Stuart Lee"
+      width={220}
+      densities={[1, 2]}
+      class="headshot"
+    />
+    <div>
+      <h1>Stuart Lee</h1>
+      <div class="links">
+        <a href="mailto:stuart.andrew.lee@gmail.com">Contact me</a>
+        {
+          iconLinks.map((link) => (
+            <a
+              href={link.href}
+              aria-label={link.label}
+              title={link.label}
+              class="icon"
+            >
+              <svg
+                viewBox={link.viewBox}
+                width="20"
+                height="20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path d={link.path} />
+              </svg>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </header>
+
+  <p>I'm Stuart, a data scientist who works in genomics.</p>
+
+  <p>
+    At <a href="https://www.wehi.edu.au/">WEHI</a> I research how short tandem repeats
+    drive neurodegenerative diseases, using large cohorts like UK Biobank and Genomics
+    England. I'm also interested in how we interpret prediction models—particularly
+    as genetic risk scores and biological foundation models become widespread. Previously
+    I built analytics tools at Genentech and research applications at the University
+    of Melbourne.
+  </p>
+
+  <p>
+    I created <a href="https://tidyomics.github.io/plyranges/">plyranges</a>,
+    which brings tidy data principles to genomics and is now part of the
+    <a href="https://tidyomics.github.io/tidyomics/">tidyomics</a> ecosystem.
+  </p>
+
+  <p>
+    In my PhD days I wrote some
+    <a href="https://archive.stuartlee.org">blogs</a> about teaching data
+    science.
+  </p>
+
+  <p>
+    I care about making data science accessible to people without quantitative
+    backgrounds, which shapes how I build software and teach.
+  </p>
+</Base>
+
+<style>
+  .intro {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .intro h1 {
+    margin: 0 0 0.5rem;
+  }
+
+  .headshot {
+    width: 110px;
+    height: auto;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+
+  .links {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    font-size: 0.9rem;
+  }
+
+  .links a {
+    display: inline-flex;
+    align-items: center;
+    color: var(--muted);
+  }
+
+  .links a:hover {
+    color: var(--fg);
+  }
+
+  .links a.icon {
+    text-decoration: none;
+    padding: 0.15rem;
+  }
+
+  .links svg {
+    display: block;
+  }
+
+  @media (max-width: 480px) {
+    .intro {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

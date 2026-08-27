@@ -5,6 +5,10 @@ on:
     branches: [master]
   workflow_dispatch:
 
+env:
+  MAIN_DOCROOT: "~/www/stuartlee.org/public_html/"
+  ARCHIVE_DOCROOT: "~/www/archive.stuartlee.org/public_html/"
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -13,11 +17,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
 
-      - name: Render site
-        run: quarto render
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build main site and archive
+        run: npm run build
 
       - name: Setup SSH and add key to agent
         env:
@@ -57,8 +67,13 @@ jobs:
         run: |
           rsync -avz --delete \
             -e "ssh -p $SSH_PORT -o StrictHostKeyChecking=no" \
-            _site/ \
-            ${SSH_USER}@${SSH_HOST}:~/www/stuartlee.org/public_html/
+            dist/ \
+            ${SSH_USER}@${SSH_HOST}:${MAIN_DOCROOT}
+
+          rsync -avz --delete \
+            -e "ssh -p $SSH_PORT -o StrictHostKeyChecking=no" \
+            dist-archive/ \
+            ${SSH_USER}@${SSH_HOST}:${ARCHIVE_DOCROOT}
 
       - name: Flush SiteGround dynamic cache
         env:
@@ -67,4 +82,4 @@ jobs:
           SSH_PORT: ${{ secrets.SITEGROUND_PORT }}
         run: |
           ssh -p $SSH_PORT ${SSH_USER}@${SSH_HOST} \
-            'curl -sSX PURGE http://127.0.0.1/* -H "Host: stuartlee.org"'
+            'curl -sSX PURGE http://127.0.0.1/* -H "Host: stuartlee.org"; curl -sSX PURGE http://127.0.0.1/* -H "Host: archive.stuartlee.org"'

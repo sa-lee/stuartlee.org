@@ -3,11 +3,10 @@
 
 [files]
 extend-exclude = [
-    "_site/",
-    "_freeze/",
-    "*.bib",
-    "*.csl",
-    "site_libs/",
+    "node_modules/",
+    "dist/",
+    "dist-archive/",
+    "package-lock.json",
 ]
 
 [default]

@@ -4,13 +4,13 @@ on:
   push:
     branches: [master]
     paths:
-      - "**.qmd"
       - "**.md"
+      - "**.astro"
       - "_typos.toml"
   pull_request:
     paths:
-      - "**.qmd"
       - "**.md"
+      - "**.astro"
       - "_typos.toml"
   workflow_dispatch:
 

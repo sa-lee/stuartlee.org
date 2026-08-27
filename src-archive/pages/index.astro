@@ -1,0 +1,46 @@
+---
+import Base from "../../shared/Base.astro";
+
+const posts = Object.values(
+  import.meta.glob<{ frontmatter: Record<string, string>; url: string }>(
+    "./posts/*.md",
+    { eager: true },
+  ),
+).sort((a, b) => (a.frontmatter.date < b.frontmatter.date ? 1 : -1));
+---
+
+<Base
+  title="Archive — Stuart Lee"
+  description="Archived blog posts by Stuart Lee."
+>
+  <h1>Archive</h1>
+  <p class="muted">
+    Older writing from <a href="https://stuartlee.org">stuartlee.org</a>.
+  </p>
+  <ul class="post-list">
+    {
+      posts.map((post) => (
+        <li>
+          <span class="muted date">{post.frontmatter.date}</span>
+          <a href={`${post.url}/`}>{post.frontmatter.title}</a>
+        </li>
+      ))
+    }
+  </ul>
+</Base>
+
+<style>
+  .post-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .post-list li {
+    margin: 0.75rem 0;
+  }
+
+  .date {
+    font-variant-numeric: tabular-nums;
+    margin-right: 0.75rem;
+  }
+</style>
