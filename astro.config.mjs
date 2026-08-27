@@ -2,6 +2,9 @@ import { defineConfig } from "astro/config";
 
 export default defineConfig({
   site: "https://stuartlee.org",
+  // v7 defaults to 'jsx', which collapses whitespace between inline elements
+  // and changes spacing around mid-sentence links. Keep the v6 behaviour.
+  compressHTML: true,
   srcDir: "src",
   publicDir: "public",
   outDir: "dist",
