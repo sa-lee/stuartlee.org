@@ -1,0 +1,2 @@
+# Old blog posts moved to the archive subdomain.
+/posts/* https://archive.stuartlee.org/posts/:splat 301

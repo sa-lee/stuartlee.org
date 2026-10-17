@@ -1,0 +1,10 @@
+// Archive: a static-assets-only Worker serving dist-archive/.
+// Headers live in public-archive/_headers.
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "stuartlee-org-archive",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist-archive"
+  }
+}

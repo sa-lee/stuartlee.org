@@ -1,0 +1,10 @@
+// Main site: a static-assets-only Worker serving the Astro build in dist/.
+// Headers and redirects live in public/_headers and public/_redirects.
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "stuartlee-org",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist"
+  }
+}
