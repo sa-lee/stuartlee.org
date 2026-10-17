@@ -7,6 +7,10 @@ extend-exclude = [
     "dist/",
     "dist-archive/",
     "package-lock.json",
+    # Verbatim copy from the old Quarto site; must not be edited
+    "src-archive/pages/posts/",
+    # Internal planning notes, not site copy
+    "docs/plans/",
 ]
 
 [default]
@@ -34,6 +38,10 @@ optimise = "optimise"
 normalise = "normalise"
 characterise = "characterise"
 categorise = "categorise"
+
+# CSS keywords (American spelling is the syntax)
+color = "color"
+center = "center"
 
 # R/Data science packages and terms
 ggplot = "ggplot"
@@ -70,6 +78,7 @@ Ujjinni = "Ujjinni"
 numbat = "numbat"
 ebsmonash = "ebsmonash"
 stuartlee = "stuartlee"
+slee = "slee"
 fosstodon = "fosstodon"
 srkobakian = "srkobakian"
 
