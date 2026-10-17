@@ -4,6 +4,7 @@
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "stuartlee-org",
   "compatibility_date": "2026-10-01",
+  "routes": [{ "pattern": "stuartlee.org", "custom_domain": true }],
   "assets": {
     "directory": "./dist"
   }

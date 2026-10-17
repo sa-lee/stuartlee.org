@@ -5,87 +5,8 @@ on:
     branches: [master]
   workflow_dispatch:
 
-env:
-  MAIN_DOCROOT: "~/www/stuartlee.org/public_html/"
-  ARCHIVE_DOCROOT: "~/www/archive.stuartlee.org/public_html/"
-
 jobs:
   deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build main site and archive
-        run: npm run build
-
-      - name: Setup SSH and add key to agent
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SITEGROUND_SSH_KEY }}
-          SSH_PASSPHRASE: ${{ secrets.SITEGROUND_SSH_PASSPHRASE }}
-          SSH_HOST: ${{ secrets.SITEGROUND_HOST }}
-          SSH_PORT: ${{ secrets.SITEGROUND_PORT }}
-        run: |
-          # Install expect for passphrase handling
-          sudo apt-get update && sudo apt-get install -y expect
-
-          mkdir -p ~/.ssh
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
-          chmod 600 ~/.ssh/deploy_key
-
-          # Add host to known_hosts
-          ssh-keyscan -p $SSH_PORT $SSH_HOST >> ~/.ssh/known_hosts
-
-          # Start ssh-agent
-          eval $(ssh-agent -s)
-          echo "SSH_AUTH_SOCK=$SSH_AUTH_SOCK" >> $GITHUB_ENV
-          echo "SSH_AGENT_PID=$SSH_AGENT_PID" >> $GITHUB_ENV
-
-          # Add key with passphrase using expect
-          expect << 'EOF'
-          spawn ssh-add /home/runner/.ssh/deploy_key
-          expect "Enter passphrase"
-          send "$env(SSH_PASSPHRASE)\r"
-          expect eof
-          EOF
-
-      - name: Deploy via rsync
-        env:
-          SSH_HOST: ${{ secrets.SITEGROUND_HOST }}
-          SSH_USER: ${{ secrets.SITEGROUND_USER }}
-          SSH_PORT: ${{ secrets.SITEGROUND_PORT }}
-        run: |
-          rsync -avz --delete \
-            -e "ssh -p $SSH_PORT -o StrictHostKeyChecking=no" \
-            dist/ \
-            ${SSH_USER}@${SSH_HOST}:${MAIN_DOCROOT}
-
-          rsync -avz --delete \
-            -e "ssh -p $SSH_PORT -o StrictHostKeyChecking=no" \
-            dist-archive/ \
-            ${SSH_USER}@${SSH_HOST}:${ARCHIVE_DOCROOT}
-
-      - name: Flush SiteGround dynamic cache
-        env:
-          SSH_HOST: ${{ secrets.SITEGROUND_HOST }}
-          SSH_USER: ${{ secrets.SITEGROUND_USER }}
-          SSH_PORT: ${{ secrets.SITEGROUND_PORT }}
-        run: |
-          ssh -p $SSH_PORT ${SSH_USER}@${SSH_HOST} \
-            'curl -sSX PURGE http://127.0.0.1/* -H "Host: stuartlee.org"; curl -sSX PURGE http://127.0.0.1/* -H "Host: archive.stuartlee.org"'
-
-  # Runs alongside the SiteGround deploy during the move to Cloudflare.
-  deploy-cloudflare:
     runs-on: ubuntu-latest
 
     steps:
