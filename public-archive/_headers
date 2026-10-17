@@ -1,5 +1,5 @@
-# Security headers, mirroring public-archive/.htaccess. style-src allows
-# 'unsafe-inline' because Shiki emits inline style="" on highlighted code.
+# Security headers. style-src allows 'unsafe-inline' because Shiki
+# emits inline style="" on highlighted code.
 /*
   Strict-Transport-Security: max-age=15552000
   X-Content-Type-Options: nosniff
